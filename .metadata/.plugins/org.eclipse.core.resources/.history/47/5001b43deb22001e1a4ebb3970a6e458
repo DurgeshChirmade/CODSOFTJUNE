@@ -1,0 +1,92 @@
+//2.Implement a StudentManagementSystem class to manage the collection of students. Include methods to add a student,remove a student, search for a student, and display all students.
+
+package com.codsoft.internship.task3;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+class StudentManagementSystem
+{
+	List<Student> students;
+
+	public StudentManagementSystem()
+	{
+		students = new ArrayList<>();
+	}
+
+	public void addStudent(Student student)
+	{
+		students.add(student);
+		System.out.println("New Student Addmission : " + student.getname());
+	}
+
+	public void removeStudent(Student student)
+	{
+		if(students.remove(student))
+		{
+			System.out.println("Student Removed : " + student.getname());
+		}
+		else
+		{
+			System.out.println("Student Not Found : " + student.getname());
+		}
+	}
+
+	public Student searchStudent(String name)
+	{
+		for(Student student : students)
+		{
+			if(! student.getname().equals(name))
+			{
+				return student;
+			}
+		}
+		return null;
+	}
+
+	public void displayAllStudents()
+	{
+		System.out.println("Student List : ");
+
+		for (Student student : students)
+		{
+			System.out.println("Name : " + student.getname());
+			System.out.println("Roll Number : " + student.getRollNumber());
+			System.out.println("Grade : " + student.getGrade());
+			System.out.println();
+		}
+	}
+}
+
+public class Second
+{
+	public static void main(String args[])
+	{
+		StudentManagementSystem sm = new StudentManagementSystem();
+
+		// Adding students
+		Student student1 = new Student("Durgesh",101,"A+");
+		sm.addStudent(student1);
+
+		Student student2 = new Student("Ajay",102,"O");
+		sm.addStudent(student2);
+
+		// Removing a student
+		sm.removeStudent(student2);
+
+		// Searching for a student
+		Student st = sm.searchStudent("Durgesh");
+		if (st != null)
+		{
+			System.out.println("Student Found : " + st.getname());
+		}
+		else
+		{
+			System.out.println("Student Not Found !!!");
+		}
+
+		// Displaying all students
+		sm.displayAllStudents();
+	}
+}

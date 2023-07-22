@@ -1,0 +1,106 @@
+//7. Display appropriate messages to the user based on their chosen options and the success or failure of their transactions.
+
+package com.codsoft.internship.task4;
+
+class ATMs
+{
+	private BankAccountS bankAccount;
+
+	public ATMs()
+	{
+		bankAccount = new BankAccountS();
+	}
+
+	public void deposit(double amount)
+	{
+		if(amount > 0)
+		{
+			bankAccount.deposit(amount);
+		}
+		else
+		{
+			System.out.println("Invalid Deposit Amount. Amount must be greater than 0.");
+		}
+	}
+
+	public void withdraw(double amount)
+	{
+		if(amount > 0)
+		{
+			double balance = bankAccount.getAccountBalance();
+			if(amount <= balance)
+			{
+				bankAccount.withdraw(amount);
+			}
+			else
+			{
+				System.out.println("Insufficient Funds. Current Balance is " + balance);
+			}
+		}
+		else
+		{
+			System.out.println("Invalid Withdrawal Amount. Amount must be greater than 0.");
+		}
+	}
+
+	public void checkBalance()
+	{
+		double balance = bankAccount.getAccountBalance();
+		System.out.println("Account Balance : " + balance);
+	}
+}
+
+class BankAccountS
+{
+	private double accountBalance;
+
+	public BankAccountS()
+	{
+		accountBalance = 0.0;
+	}
+
+	public double getAccountBalance()
+	{
+		return accountBalance;
+	}
+
+	public void deposit(double amount)
+	{
+		accountBalance += amount;
+		System.out.println("Deposit Successful. New Balance is " + accountBalance);
+	}
+
+	public void withdraw(double amount)
+	{
+		if(amount <= accountBalance)
+		{
+			accountBalance -= amount;
+			System.out.println("Withdrawal Successful. New Balance is " + accountBalance);
+		}
+		else
+		{
+			System.out.println("Insufficient Funds...");
+		}
+	}
+}
+
+public class Seven
+{
+	public static void main(String args[])
+	{
+		ATMs atm = new ATMs();
+
+		atm.checkBalance();
+
+		atm.deposit(700.0);
+		atm.withdraw(300.0);
+
+		atm.checkBalance();
+
+		atm.withdraw(800.0);
+		atm.deposit(-200.0);
+
+		atm.checkBalance();
+
+	}
+}

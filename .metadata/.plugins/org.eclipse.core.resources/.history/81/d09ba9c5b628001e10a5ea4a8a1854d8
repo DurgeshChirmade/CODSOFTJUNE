@@ -1,0 +1,19 @@
+//5.Connect the ATM class with the user's bank account class to access and modify the account balance.
+
+package com.codsoft.internship.task4;
+
+
+public class Five
+{
+	public static void main(String args[])
+	{
+		ATM atm = new ATM();
+
+		atm.checkBalance();
+		
+		atm.deposit(600.0);
+		atm.withdraw(300.0);
+
+		atm.checkBalance();
+	}
+}

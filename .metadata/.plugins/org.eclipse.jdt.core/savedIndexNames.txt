@@ -1,0 +1,8 @@
+INDEX VERSION 1.134+E:\New Volume\Codes\CodSoft\Codosft\.metadata\.plugins\org.eclipse.jdt.core
+1508840873.index
+1865797976.index
+3241705177.index
+717910320.index
+43972541.index
+3659213477.index
+232115144.index
